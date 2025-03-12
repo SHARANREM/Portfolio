@@ -1,0 +1,295 @@
+main{
+    height: 100%;
+    header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h1{
+            @include slideInUp(2s);
+            font-family: "Major Mono Display", monospace;;
+        }
+        img{
+            display: none ;
+            width: 30px;
+            height: 30px;
+        }
+        nav{
+            ul{
+                display: flex;
+                gap: 20px;
+                justify-content: space-between;
+                align-items: center;
+                a{
+                    li {
+                        position: relative; // Required for absolute positioning
+                        color: black !important;
+                        padding: 5px;
+                        cursor: pointer;
+                        font-weight: 700;
+                        &::after {
+                          content: '';
+                          width: 0; 
+                          height: 3px;
+                          border-radius: 20px;
+                          background-color: black;
+                          position: absolute;
+                          bottom: 0;
+                          left: 0%;
+                          transform: translateX(0%);
+                          transition: width 0.3s ease-in-out;
+                        }
+                        &:hover::after {
+                          width: 100%; 
+                        }
+                    }
+                    &:nth-child(1) li{@include fadeInScale(1.5s)}
+                    &:nth-child(2) li{@include fadeInScale(1.5s,1s)}
+                    &:nth-child(3) li{@include fadeInScale(1.5s,2.2s)}
+                    &:nth-child(4) li{@include fadeInScale(1.5s,2.4s)}
+
+                }
+            }
+        }
+        a{
+            button{
+                cursor: pointer ;      
+                padding: 15px 20px;
+                background-color: #333;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                @include slideInUp();
+            }
+            button:hover{
+                padding-left: 40px;
+            }
+        }
+        .burger-menu{
+            z-index: 9999;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            gap: 50px;
+            top: -1000px;
+            right: 0px;
+            padding: 30px;
+            height: 100%;
+            background-color: whitesmoke;
+            .snav{
+                display: block;
+                ul{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 30px;
+                    a{
+                        display: block;
+                        width: 100%;
+                        li{
+                            text-align: right;  
+                        }
+                    }
+                }
+                
+            }
+            a{
+                display: block;
+            }
+        }
+        
+        @include res(1000px){
+            h1{
+                font-size: 1.5rem;
+            }
+            nav{
+                ul{
+                    gap: 10px;
+                }
+            }
+            a{
+                button{
+                    padding: 10px;
+                }
+            }
+        }
+        @include res(800px){
+            h1{
+                font-size: 1.5rem;
+            }
+            nav{
+                ul{
+                    gap: 10px;
+                    a{
+                        li{
+                            font-size: .8rem;
+                        }
+                    }
+                }
+            }
+            a{
+                button{
+                    padding: 10px;
+                }
+            }
+        }
+        @include res(700px){
+            nav{
+                display: none;
+            }
+            a{
+                display: none;
+            }
+            img{
+                display: block;
+            }
+        }
+        @include res(425px){
+            .burger-menu{
+                width: 100%;
+            }
+        }
+    }
+    .me{
+        display: flex;
+        align-items: center;
+        justify-content: center ;
+        height: 80%;
+        flex-direction: column;
+        .group{
+            font-family: "Major Mono Display", monospace;
+            font-size: 7rem;
+            z-index: 99;
+            color: transparent;
+            -webkit-text-stroke: 1px black;
+            transition: .2s ease;
+            height: fit-content;
+            @include slideInUp(3s);
+        }
+        .group:hover{
+            z-index: 101;
+            color: black    ;
+            -webkit-text-stroke: 1px black;
+        }
+        .me-img{
+            position: absolute;
+            z-index: 100;
+            @include slideInUp(1.5s);
+        }
+        buttOn{
+            z-index: 101;
+            position: relative;
+            top: 20%;
+            @include slideInUp(1.9s);
+            cursor: pointer ;      
+                padding: 15px 20px;
+                background-color: #333;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                border: 2px solid white;
+                @include slideInUp();
+        }
+        button:hover{
+            padding-left: 40px;
+            background-color: #5f5f5f;
+        }
+        @include res(1080px){
+            height: 100%;
+            .group{
+                font-size: 6rem;
+            }
+        }
+        @include res(920px){
+            margin-top: 20px;
+            .me-img{
+                position: relative;
+                top: 0%;
+            }
+            .group{
+                font-size: 5rem;
+            }
+            button{
+                top: 1%;
+            }
+        }
+        @include res(800px){
+            .group{
+                font-size: 4rem;
+            }
+        }
+        @include res(630px){
+            .me-img{
+                position: relative;
+                top: -10%;
+            }
+            .group{
+                height: fit-content;
+            }
+            button{
+                top: 1%;
+            }
+        }
+        @include res(550px){
+            .me-img{
+                position: relative;
+                top: -10%;
+                width: 300px;
+                height: 350px;
+            }
+            .group{
+                margin-top: 10px;
+                font-size: 2.5rem;
+            }
+            button{
+                top: 1%;
+            }
+        }
+        @include res(425px){
+            .me-img{
+                position: relative;
+                top: -10%;
+                width: 300px;
+                height: 350px;
+            }
+            .group{
+                margin-top: 10px;
+                font-size: 2rem;
+            }
+            button{
+                top: 1%;
+            }
+        }
+        @include res(405px){
+            .me-img{
+                position: relative;
+                top: -10%;
+                width: 300px;
+                height: 350px;
+            }
+            .group{
+                margin-top: 10px;
+                font-size: 1.5rem;
+            }
+            button{
+                top: 1%;
+            }
+        }
+    }
+    p{
+        
+        @include slideInUp();
+        text-align: center;
+    }
+    .hoblink{
+        margin-top: 10px;
+        
+        @include fadeInScale();
+        text-align: left; background-color: #333; width: fit-content; padding: 10px; color: white; border-radius: 3px;
+    }
+    @include res(920px){
+        .hoblink{
+            text-align: center;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,94 @@
+// Google font
+@import url('https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Overpass+Mono:wght@300..700&display=swap');
+
+// CSS Resets
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Overpass Mono", monospace;
+  text-decoration: none;
+  list-style: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #000000; 
+  border-radius: 5px;
+}
+
+/* Scrollbar Thumb on Hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f3f; 
+}
+
+// Animations
+@mixin slideInUp($duration: 1s, $timing: ease-out, $delay:1s) {
+    @keyframes slideInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    animation: slideInUp $duration $timing $delay;
+}
+@mixin fadeInScale($delay: 1s,$duration: 0.8s, $timing: ease-out) {
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(.7);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    animation: fadeInScale $duration $timing $delay;
+}
+@mixin float($delay: 0s,$duration: 1s, $timing: ease-out) {
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(20px);
+    }
+  }
+  
+  animation: float $duration $timing $delay infinite alternate;
+}
+@mixin fadeout($delay: 1s) {
+  @keyframes fadeout {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+  }
+  animation: fadeout 1s ease-out $delay forwards;
+}
+
+
+// Responsive
+@mixin res($size){
+    @media all and (max-width: $size){
+        @content;
+    }
+}
